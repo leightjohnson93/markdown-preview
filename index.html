@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <title>Markdown Preview</title>
+</head>
+
+<body>
+  <h1>Markdown Preview</h1>
+  <textarea id='source'></textarea>
+  <br>
+  <button id='render'>Render</button>
+  <hr>
+  <div id='preview'></div>
+
+  <script src="node_modules/marked/lib/marked.js"></script>
+  <script> 
+    // document.getElementById('render').onclick = () => {
+    //   let userText = document.getElementById('source').value;
+    //   document.getElementById('preview').innerHTML = marked(userText);
+
+    // }
+
+    const source = document.getElementById('source');
+
+    let timeout = null;
+    source.onkeyup = () => {
+      clearTimeout(timeout);
+      timeout = setTimeout(render, 1000);
+    }
+
+    const render = () => {
+      const preview = document.getElementById('preview');
+      preview.innerHTML = marked(source.value);
+    }
+
+    source.addEventListener('click', render)
+  </script>
+  <style>
+    h1 {
+      font-family: Lobster;
+      font-size: 35px;
+    }
+
+    #render {
+      background-color: lightskyblue;
+      border-radius: 50px;
+      font-size: 20px;
+      color: purple;
+    }
+    #render:focus {
+      outline: none;
+      box-shadow: 0px 0px 4px purple;
+    }
+
+    #preview {
+      border-style: solid;
+      width: 50%;
+      height: 400px;
+      overflow: scroll;
+      background-image: linear-gradient(135deg, rgba(255, 0, 0, 0.486),rgba(255, 166, 0, 0.5),rgba(255, 255, 0, 0.493),rgba(0, 128, 0, 0.486),rgba(0, 0, 255, 0.418),rgba(76, 0, 130, 0.452),rgba(238, 130, 238, 0.411))
+    }
+    #source {
+      width: 50%;
+      height: 200px;
+      background-image: linear-gradient(45deg, lightgreen, papayawhip);
+    }
+  </style>
+</body>
+
+</html>
