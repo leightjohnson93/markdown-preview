@@ -19,12 +19,6 @@
 
   <script src="node_modules/marked/lib/marked.js"></script>
   <script> 
-    // document.getElementById('render').onclick = () => {
-    //   let userText = document.getElementById('source').value;
-    //   document.getElementById('preview').innerHTML = marked(userText);
-
-    // }
-
     const source = document.getElementById('source');
 
     let timeout = null;
@@ -40,6 +34,7 @@
 
     source.addEventListener('click', render)
   </script>
+
   <style>
     h1 {
       font-family: Lobster;
@@ -51,10 +46,19 @@
       border-radius: 50px;
       font-size: 20px;
       color: purple;
+      padding: 10px;
     }
     #render:focus {
       outline: none;
       box-shadow: 0px 0px 4px purple;
+      background-color: rgb(63, 177, 248);
+      color: rgb(88, 0, 88);
+    }
+
+    #render:hover {
+      box-shadow: 0px 0px 4px purple;
+      background-color: rgb(63, 177, 248);
+      color: rgb(88, 0, 88);
     }
 
     #preview {
